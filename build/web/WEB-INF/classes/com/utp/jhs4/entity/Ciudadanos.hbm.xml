@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/09/2019 12:46:50 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.utp.jhs4.entity.Ciudadanos" table="CIUDADANOS" schema="LS" optimistic-lock="version">
+        <id name="cedula" type="big_decimal">
+            <column name="CEDULA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="200" not-null="true" />
+        </property>
+        <set name="prestamoses" table="PRESTAMOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CEDULA_FK" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.utp.jhs4.entity.Prestamos" />
+        </set>
+    </class>
+</hibernate-mapping>

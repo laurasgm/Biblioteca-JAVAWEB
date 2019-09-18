@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/09/2019 12:46:50 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.utp.jhs4.entity.Prestamos" table="PRESTAMOS" schema="LS" optimistic-lock="version">
+        <composite-id name="id" class="com.utp.jhs4.entity.PrestamosId">
+            <key-property name="isbnFk" type="big_decimal">
+                <column name="ISBN_FK" precision="22" scale="0" />
+            </key-property>
+            <key-property name="cedulaFk" type="big_decimal">
+                <column name="CEDULA_FK" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="libros" class="com.utp.jhs4.entity.Libros" update="false" insert="false" fetch="select">
+            <column name="ISBN_FK" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ciudadanos" class="com.utp.jhs4.entity.Ciudadanos" update="false" insert="false" fetch="select">
+            <column name="CEDULA_FK" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
